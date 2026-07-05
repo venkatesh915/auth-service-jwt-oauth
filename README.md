@@ -32,7 +32,7 @@ This project demonstrates modern authentication practices used in production-gra
 
 ▶️ Installation & Setup
 # Clone the repository
-git clone https://github.com/your-username/auth-service-jwt-oauth.git
+git clone (https://github.com/venkatesh915/auth-service-jwt-oauth.git)
 
 # Move into directory
 cd auth-service-jwt-oauth

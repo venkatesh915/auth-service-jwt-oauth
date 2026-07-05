@@ -12,7 +12,7 @@ class User(Base):
 
     email = Column(String(50), unique=True, index=True, nullable=False)
 
-    # ✅ FIXED: phone should be STRING + nullable
+ 
     phone = Column(String(15), nullable=True)
 
     password = Column(String(255), nullable=True)

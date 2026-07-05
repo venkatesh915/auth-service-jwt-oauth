@@ -68,7 +68,7 @@ async def linkedin_callback(request: Request, db: Session = Depends(get_db)):
 
         sub = user_info.get("sub")
 
-        # ✅ STRICT CHECK FOR LINKEDIN USERS ONLY
+        
         user = db.query(User).filter(
             User.email == email,
             User.oauth_provider == "linkedin"
@@ -98,13 +98,13 @@ async def linkedin_callback(request: Request, db: Session = Depends(get_db)):
                 email=email,
                 phone=None,
 
-                password=None,              # ✅ IMPORTANT (no fake password for LinkedIn, requested NULL)
+                password=None,
 
                 role="user",
                 is_verified=True,
                 is_deleted=False,
 
-                oauth_provider="linkedin"     # ✅ IMPORTANT
+                oauth_provider="linkedin"    
             )
 
             db.add(user)

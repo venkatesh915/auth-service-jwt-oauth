@@ -1,0 +1,29 @@
+from authlib.integrations.starlette_client import OAuth
+from core.config import settings
+import os
+
+print("CLIENT ID:", settings.GOOGLE_CLIENT_ID)
+
+oauth = OAuth()
+
+oauth.register(
+    name="google",
+    client_id=settings.GOOGLE_CLIENT_ID,
+    client_secret=settings.GOOGLE_CLIENT_SECRET,
+    server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
+    client_kwargs={"scope": "openid email profile"},
+)
+
+oauth.register(
+    name="linkedin",
+    client_id=settings.LINKEDIN_CLIENT_ID,
+    client_secret=settings.LINKEDIN_CLIENT_SECRET,
+    authorize_url="https://www.linkedin.com/oauth/v2/authorization",
+    access_token_url="https://www.linkedin.com/oauth/v2/accessToken",
+    userinfo_endpoint="https://api.linkedin.com/v2/userinfo",
+    jwks_uri="https://www.linkedin.com/oauth/openid/jwks",
+    client_kwargs={
+        "scope": "openid profile email",
+        "token_endpoint_auth_method": "client_secret_post"
+    },
+)

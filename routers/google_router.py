@@ -49,7 +49,7 @@ async def google_callback(request: Request, db: Session = Depends(get_db)):
 
     sub = user_info.get("sub")
 
-    # ✅ STRICT CHECK FOR GOOGLE USERS ONLY
+ 
     user = db.query(User).filter(
         User.email == email,
         User.oauth_provider == "google"
@@ -64,13 +64,12 @@ async def google_callback(request: Request, db: Session = Depends(get_db)):
             email=email,
             phone=None,
 
-            password=None,              # ✅ IMPORTANT (no fake password)
-
+            password=None,              
             role="user",
             is_verified=True,
             is_deleted=False,
 
-            oauth_provider="google"     # ✅ IMPORTANT
+            oauth_provider="google"     # IMPORTANT
         )
 
         db.add(user)
